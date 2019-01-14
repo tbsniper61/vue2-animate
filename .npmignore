@@ -1,0 +1,14 @@
+.*
+*.log
+*.swp
+*.yml
+bower.json
+coverage
+config
+bin
+lib
+test
+docs
+README.md
+LICENSE
+fusionfile.js

@@ -1,0 +1,27 @@
+{
+  "name": "vue2-animate",
+  "description": "SCSS/LESS cross-browser animation library, for use with Vue.js 2. Ported from Animate.css.",
+  "main": "",
+  "authors": [
+    "Simon Asika"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "less",
+    "animate",
+    "animate.css",
+    "vue",
+    "vue.js",
+    "transition",
+    "vue-animate",
+    "css"
+  ],
+  "homepage": "https://github.com/asika32764/vue2-animate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

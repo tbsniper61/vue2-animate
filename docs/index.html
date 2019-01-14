@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta http-equiv="refresh" content="0; url=https://the-allstars.com/vue2-animate/" />
+    <link rel="canonical" href="https://the-allstars.com/vue2-animate/" />
+    
+    <title>Vue2-animate - For Vue.js transitions</title>
+    <meta name="description" content="A Vue.js 2.0 port of Animate.css. For use with Vue's built-in transitions." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./dist/vue2-animate.css" />
+    <link rel="icon" href="./images/logo.png" type="image/x-icon">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=".">Vue2-animate</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="https://github.com/asika32764/vue2-animate">GitHub</a></li>
+                <li><a href="https://www.npmjs.com/package/vue2-animate">NPM</a></li>
+                <li><a href="https://github.com/asika32764/vue2-animate/blob/master/LICENSE">MIT License</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Vue2-animate</h1>
+        <p>
+            A Vue.js 2.0 port of Animate.css. For use with Vue's built-in transitions
+        </p>
+        <p>
+            <!-- Place this tag where you want the button to render. -->
+            <a class="github-button" href="https://github.com/asika32764/vue2-animate" data-size="large" data-show-count="true" aria-label="Star asika32764/vue2-animate on GitHub">Star</a>
+            <!-- Place this tag where you want the button to render. -->
+            <a class="github-button" href="https://github.com/asika32764/vue2-animate/archive/master.zip" data-size="large" aria-label="Download asika32764/vue2-animate on GitHub">Download</a>
+        </p>
+        <p>
+            <a class="btn btn-primary" href="https://github.com/asika32764/vue2-animate" role="button">Install &raquo;</a>
+            <a class="btn btn-info" href="https://github.com/asika32764/vue2-animate#sassscss" role="button">Release 2.x for SCSS</a>
+        </p>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 100px">
+    <div id="demo" class="row">
+        <div class="col-md-4">
+            <h3 style="margin-top: 0; margin-bottom: .7em">Select an effect to DEMO</h3>
+            <div class="form-group">
+                <select name="effect" v-model="effect" class="form-control">
+                    <optgroup label="Bounce">
+                        <option value="bounce">bounce</option>
+                        <option value="bounceDown">bounceDown</option>
+                        <option value="bounceLeft">bounceLeft</option>
+                        <option value="bounceRight">bounceRight</option>
+                        <option value="bounceUp">bounceUp</option>
+                    </optgroup>
+                    <optgroup label="Fade">
+                        <option value="fade">fade</option>
+                        <option value="fadeDown">fadeDown</option>
+                        <option value="fadeDownBig">fadeDownBig</option>
+                        <option value="fadeLeft">fadeLeft</option>
+                        <option value="fadeLeftBig">fadeLeftBig</option>
+                        <option value="fadeRight">fadeRight</option>
+                        <option value="fadeRightBig">fadeRightBig</option>
+                        <option value="fadeUp">fadeUp</option>
+                        <option value="fadeUpBig">fadeUpBig</option>
+                    </optgroup>
+                    <optgroup label="Rotate">
+                        <option value="rotate">rotate</option>
+                        <option value="rotateDownLeft">rotateDownLeft</option>
+                        <option value="rotateDownRight">rotateDownRight</option>
+                        <option value="rotateUpLeft">rotateUpLeft</option>
+                        <option value="rotateUpRight">rotateUpRight</option>
+                    </optgroup>
+                    <optgroup label="Slide">
+                        <option value="slideDown">slideDown</option>
+                        <option value="slideLeft">slideLeft</option>
+                        <option value="slideRight">slideRight</option>
+                        <option value="slideUp">slideUp</option>
+                    </optgroup>
+                    <optgroup label="Zoom">
+                        <option value="zoom">zoom</option>
+                        <option value="zoomDown">zoomDown</option>
+                        <option value="zoomLeft">zoomLeft</option>
+                        <option value="zoomRight">zoomRight</option>
+                        <option value="zoomUp">zoomUp</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="code-sample">
+                <pre><code>&lt;transition-group name="{{ effect }}" tag=&quot;ul&quot; class=&quot;list-group&quot;&gt;
+    &lt;li v-for=&quot;(item, i) in items&quot; class=&quot;list-group-item&quot; v-bind:key=&quot;i&quot;&gt;<span v-pre>{{ item }}</span>&lt;/li&gt;
+&lt;/transition-group&gt;</code></pre>
+            </div>
+        </div>
+        <div id="demo-component" class="col-md-8">
+            <div class="text-toolbar">
+                <div class="input-group">
+                    <input type="text" class="form-control" v-model="input" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-success" @click="addItem">Add</button>
+                        <button type="button" class="btn btn-danger" @click="reset">Reset</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="list-box" style="margin-top: 30px">
+                <transition-group v-bind:name="effect" tag="ul" class="list-group">
+                    <li v-for="(item, i) in items" class="list-group-item" v-bind:key="item">{{ item }}</li>
+                </transition-group>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script>
+    var lorem = 'Lorem ipsum dolor sit amet consectetur adipiscing elit Duis vestibulum tincidunt turpis Etiam eget eleifend elit In et vestibulum ipsum Donec eu convallis urna Pellentesque sit amet accumsan leo Aliquam elementum justo turpis mollis maximus libero faucibus non Vivamus et eros libero';
+    var words = lorem.split(' ');
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            items: ['Sakura', 'Sunflower', 'Rose'],
+            input: 'Hello',
+            effect: 'fade'
+        },
+        methods: {
+            addItem: function ()
+            {
+                if (!this.input) {
+                    return;
+                }
+
+                this.items.splice(0, 0, this.input);
+                this.input = words.shift();
+
+                if (!words.length) {
+                    words = lorem.split(' ');
+                }
+            },
+            reset: function ()
+            {
+                this.items = [];
+            }
+        }
+    });
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48372917-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
